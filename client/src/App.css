@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+}
+
+.main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #F0F0F0;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-menu {
+  height: 95%;
+  width: 12%;
+  min-width: 160px;
+  /* background-color: #d7d7d7; */
+  padding: 0 25px;
+}
+
+.map-container {
+  height: 100%;
+  width: 86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-interactive {
+  background-color: white;
+  height: 95%;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.logo-container {
+  width: 100%;
+  min-height: 90px;
+  max-height: 120px;
+  height: 20%;
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container {
+  width: 100%;
+  /* min-height: 90px;
+  max-height: 120px; */
+  height: 75%;
+  /* background-color: white; */
+}
+
+.logo-and-title {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-title {
+  transform: rotate(270deg);
+  font-size: 12pt;
+  font-weight: bold;
+  line-height: 90%;
+}
+
+.logo-image {
+  width: 30%;
+}
+
+.page-title {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #188FE5;
+}
+
+.form-label {
+  text-transform: uppercase;
+  font-size: 10pt;
+  font-weight: 700;
+  color: #4F4F4F;
+  margin-left: 5px;
+}
+
+.form-select {
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin: 5px 0;
+  /* font-weight: bold; */
+  color: #4F4F4F;
+}
+
+.form-select:hover {
+  cursor: pointer;
+}
+
+.radio-option {
+  padding: 8px;
+  display: block;
+  background-color: #fff;
+  margin: 5px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 10pt;
+  border: 2px solid white;
+}
+
+.radio-option:hover {
+  cursor: pointer;
+}
+
+.radio-button {
+  display: none;
+  /* display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 100; */
+}
+
+.radio-button:checked + label {
+  border: 2px solid black;
+}
+
+.form-section {
+  margin-top: 20px;
+}
+
+.svgMap-map-wrapper {
+  background: #fff !important;
+  height: 95vh !important;
+  width: auto !important;
+  border-radius: 16px !important;
+}
+
+/* svg g path {
+  fill: #188FE5 !important;
+  pointer-events: all !important;
+}
+
+svg g path:hover {
+  fill: #000 !important;
+} */
+
+/* path#svgMap-map-country-DZ:hover {
+  fill: #000 !important;
+} */
+
+/* .svg-pan-zoom_viewport:hover {
+  fill: #000 !important;
+} */
+
+/* .svgMap-country {
+  pointer-events: visible;
+  fill: #188FE5 !important;
+}
+
+.svgMap-country:hover {
+  fill: #188FE5 !important;
+  fill-opacity: 0.5;
+} */
+
+/* path.svgMap-country:hover {
+  fill: #ffffff !important;
+} */
