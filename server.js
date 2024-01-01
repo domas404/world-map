@@ -24,9 +24,10 @@ app.get('/api/all-countries', (req, res) => {
 
 app.get('/api/user-input', (req, res) => {
     const { year } = req.query;
-    const { coa } = req.query;
-    const query = `SELECT * FROM refugees WHERE year = ? AND coa = ?`
-    db.all(query, [year, coa], (err, rows) => {
+    const { country } = req.query;
+    const { migration } = req.query;
+    const query = `SELECT * FROM refugees WHERE year = ? AND ${migration == 'Immigration' ? 'coa' : 'coo'} = ?`
+    db.all(query, [year, country], (err, rows) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Internal Server Error' });

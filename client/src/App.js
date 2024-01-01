@@ -33,20 +33,21 @@ export default function App() {
   const [input, setInput] = useState({});
   const [data, setData] = useState([]);
 
-  async function getData(year, country) {
-    let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&coa=${country}`);
+  async function getData(year, country, migration) {
+    let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&country=${country}&migration=${migration}`);
     // console.log(res.data);
     let resData = res.data;
     setData(() => resData);
   }
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data])
+  useEffect(() => {
+    console.log(data);
+  }, [data])
 
   useEffect(() => {
     if (Object.keys(input).length != 0)
-      getData(input.year, input.country);
+      console.log("Migration: ", input.migration);
+      getData(input.year, input.country, input.migration);
   }, [input]);
 
   const formik = useFormik({

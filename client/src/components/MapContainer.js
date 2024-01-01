@@ -32,7 +32,8 @@ export default function MapContainer(props) {
         removeOldMap()
         let mapDataValues = {}
         for (let i=0; i<props.data.length; i++) {
-            let isoCode = getCode(props.data[i].coo)
+            let country = props.formInput.migration == 'Immigration' ? props.data[i].coo : props.data[i].coa;
+            let isoCode = getCode(country);
             if (isoCode == undefined)
                 continue;
             mapDataValues[isoCode] = {refugees: parseInt(props.data[i].refugees)};
