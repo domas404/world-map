@@ -32,12 +32,21 @@ export default function MapContainer(props) {
         removeOldMap()
         let mapDataValues = {}
         for (let i=0; i<props.data.length; i++) {
-            let country = props.formInput.migration == 'Immigration' ? props.data[i].coo : props.data[i].coa;
+            let country = props.formInput.migration == 'Immigration' ? props.data[i].coo_iso : props.data[i].coa_iso;
             let isoCode = getCode(country);
             if (isoCode == undefined)
                 continue;
             mapDataValues[isoCode] = {refugees: parseInt(props.data[i].refugees)};
         }
+        let selectedCountryisoCode = getCode(props.formInput.country);
+        let totalMigrants = 0
+        for (let i=0; i<props.data.length; i++){
+            totalMigrants += parseInt(props.data[i].refugees);
+        }
+        mapDataValues[selectedCountryisoCode] = {
+            refugees: totalMigrants,
+            color: '#000000'
+        };
         setMapData(() => mapDataValues);
     }, [props.data])
 
