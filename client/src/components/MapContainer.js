@@ -11,7 +11,7 @@ export default function MapContainer(props) {
 
     function getCode(alpha3) {
         let country = countries[[alpha3][0]];
-        if (country != undefined)
+        if (country !== undefined)
             return country["alpha2"]
         else
             return undefined
@@ -32,9 +32,9 @@ export default function MapContainer(props) {
         removeOldMap()
         let mapDataValues = {}
         for (let i=0; i<props.data.length; i++) {
-            let country = props.formInput.migration == 'Immigration' ? props.data[i].coo_iso : props.data[i].coa_iso;
+            let country = props.formInput.migration === 'Immigration' ? props.data[i].coo_iso : props.data[i].coa_iso;
             let isoCode = getCode(country);
-            if (isoCode == undefined)
+            if (isoCode === undefined)
                 continue;
             mapDataValues[isoCode] = {refugees: parseInt(props.data[i].refugees)};
         }
@@ -47,12 +47,13 @@ export default function MapContainer(props) {
             refugees: totalMigrants,
             color: '#000000'
         };
+        
         setMapData(() => mapDataValues);
     }, [props.data])
 
     useEffect(() => {
-        if (mapData != undefined){
-            if (Object.keys(mapData).length != 0){
+        if (mapData !== undefined){
+            if (Object.keys(mapData).length !== 0){
                 new svgMap({
                     targetElementID: 'svgMap',
                     data: {

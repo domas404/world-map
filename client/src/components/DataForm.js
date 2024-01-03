@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFormik, Field, Form, FormikProvider } from 'formik';
+import { Field, Form, FormikProvider } from 'formik';
 import '../App.css';
 
 export default function DataForm(props) {
@@ -7,12 +7,13 @@ export default function DataForm(props) {
     const [countries, setCountries] = useState([]);
 
     useEffect(() => {
-        if (props.data != undefined){
-            let mappedData = props.data.map((item) => {
-                return <option key={item.coa} value={item.coa}>{item.coa_name}</option>
+        if (props.data !== undefined){
+            let sortedData = [...props.data];
+            sortedData.sort((a, b) => a.coa_name > b.coa_name);
+            let mappedData = sortedData.map((item) => {
+                return <option key={item.coa_iso} value={item.coa_iso}>{item.coa_name}</option>
             })
             setCountries(() => mappedData);
-            // console.log(mappedData);
         }
     }, [props.data])
 

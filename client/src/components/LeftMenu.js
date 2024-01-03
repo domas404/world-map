@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import '../App.css';
 import globe from '../assets/globe.png'
 import DataForm from './DataForm'
@@ -11,7 +11,7 @@ export default function LeftMenu(props) {
                     <div className="logo-title">
                         world<br />data
                     </div>
-                    <img className="logo-image" src={globe} />
+                    <img className="logo-image" src={globe} alt="world logo" />
                 </div>
                 <div className="page-title">
                     Refugee data

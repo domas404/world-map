@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/all-countries', (req, res) => {
-    const query = `SELECT DISTINCT coa_name, coa FROM refugees`
+    const query = `SELECT DISTINCT coa_name, coa_iso FROM refugees`
     db.all(query, (err, rows) => {
         if (err) {
             console.error(err);
@@ -26,7 +26,7 @@ app.get('/api/user-input', (req, res) => {
     const { year } = req.query;
     const { country } = req.query;
     const { migration } = req.query;
-    const query = `SELECT * FROM refugees WHERE year = ? AND ${migration == 'Immigration' ? 'coa' : 'coo'} = ?`
+    const query = `SELECT * FROM refugees WHERE year = ? AND ${migration == 'Immigration' ? 'coa_iso' : 'coo_iso'} = ?`
     db.all(query, [year, country], (err, rows) => {
         if (err) {
             console.error(err);
