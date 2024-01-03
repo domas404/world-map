@@ -7,7 +7,7 @@ html, body, #root {
   width: 100%;
   padding: 0;
   margin: 0;
-  font-family: Arial;
+  font-family: 'Inter', sans-serif;
 }
 
 .main-container {
@@ -24,7 +24,6 @@ html, body, #root {
   height: 95%;
   width: 12%;
   min-width: 160px;
-  /* background-color: #d7d7d7; */
   padding: 0 25px;
 }
 
@@ -91,8 +90,8 @@ html, body, #root {
 
 .form-label {
   text-transform: uppercase;
-  font-size: 10pt;
-  font-weight: 700;
+  font-size: 9pt;
+  font-weight: 500;
   color: #4F4F4F;
   margin-left: 5px;
 }
@@ -105,8 +104,8 @@ html, body, #root {
   border: none;
   border-radius: 8px;
   margin: 5px 0;
-  /* font-weight: bold; */
   color: #4F4F4F;
+  box-shadow: #a1a1a1 2px 2px 3px;
 }
 
 .form-select:hover {
@@ -121,31 +120,50 @@ html, body, #root {
   border-radius: 8px;
   text-align: center;
   font-size: 10pt;
-  border: 2px solid white;
+  box-shadow: #a1a1a1 2px 2px 3px;
+  font-family: Arial;
 }
 
 .radio-option:hover {
   cursor: pointer;
+  background-color: #ddd;
 }
 
 .radio-button {
   display: none;
-  /* display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-  z-index: 100; */
 }
 
 .radio-button:checked + label {
-  border: 2px solid black;
+  background-color: #188FE5;
+  color: white;
 }
 
 .form-section {
   margin-top: 20px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-family: 'Inter';
+  font-size: 9pt;
+  font-weight: 500;
+  color: white;
+  background-color: #188FE5;
+  box-shadow: #a1a1a1 2px 2px 3px;
+}
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #1374b9;
+  color: white;
+}
+.submit-button:active {
+  background-color: #0f5c93;
+  color: white;
 }
 
 .svgMap-map-wrapper {
@@ -154,34 +172,3 @@ html, body, #root {
   width: auto !important;
   border-radius: 16px !important;
 }
-
-/* svg g path {
-  fill: #188FE5 !important;
-  pointer-events: all !important;
-}
-
-svg g path:hover {
-  fill: #000 !important;
-} */
-
-/* path#svgMap-map-country-DZ:hover {
-  fill: #000 !important;
-} */
-
-/* .svg-pan-zoom_viewport:hover {
-  fill: #000 !important;
-} */
-
-/* .svgMap-country {
-  pointer-events: visible;
-  fill: #188FE5 !important;
-}
-
-.svgMap-country:hover {
-  fill: #188FE5 !important;
-  fill-opacity: 0.5;
-} */
-
-/* path.svgMap-country:hover {
-  fill: #ffffff !important;
-} */

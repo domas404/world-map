@@ -47,7 +47,7 @@ export default function MapContainer(props) {
             refugees: totalMigrants,
             color: '#000000'
         };
-        
+
         setMapData(() => mapDataValues);
     }, [props.data])
 
@@ -60,7 +60,7 @@ export default function MapContainer(props) {
                         data: {
                             refugees: {
                                 name: 'Refugees',
-                                thousandSeparator: ',',
+                                thousandSeparator: ' ',
                                 thresholdMax: 1200,
                                 thresholdMin: 0
                             },
