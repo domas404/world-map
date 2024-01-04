@@ -23,8 +23,8 @@ html, body, #root {
 .side-menu {
   height: 95%;
   width: 12%;
-  min-width: 160px;
-  padding: 0 25px;
+  min-width: 180px;
+  padding: 0 16px;
 }
 
 .map-container {
@@ -171,4 +171,75 @@ html, body, #root {
   height: 95vh !important;
   width: auto !important;
   border-radius: 16px !important;
+}
+
+.country-info-container {
+  height: 100%;
+  width: 100%;
+  /* padding: 20px 4px; */
+}
+
+.country-title-and-year {
+  min-height: 90px;
+  max-height: 120px;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.country-title {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14pt;
+  color: #188FE5;
+}
+
+.country-year {
+  text-align: center;
+  font-size: 9pt;
+  font-weight: 500;
+  color: #4F4F4F;
+}
+
+.top-countries-container {
+  font-size: 10pt;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-transform: uppercase;
+  box-shadow: #a1a1a1 2px 2px 3px;
+}
+
+.top-countries-heading {
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.top-5 {
+  color: #188FE5;
+  font-weight: bold;
+}
+
+.top-country {
+  margin: 5px 0;
+}
+
+.brief-country-info {
+  font-size: 10pt;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 20px 0;
+  /* text-transform: uppercase; */
+  box-shadow: #a1a1a1 2px 2px 3px;
+}
+
+.text-highlight {
+  margin: 0 5px;
+  color:#188FE5;
+  font-weight: bold;
 }

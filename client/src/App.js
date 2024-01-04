@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import LeftMenu from './components/LeftMenu'
+import RightMenu from './components/RightMenu'
 import MapContainer from './components/MapContainer'
 import { useFormik } from 'formik';
 
@@ -54,7 +55,7 @@ export default function App() {
     <div className="main-container">
       <LeftMenu formik={formik} data={allCountries} />
       <MapContainer data={data} formInput={input} />
-      {/* <RightMenu /> */}
+      <RightMenu formInput={input} />
     </div>
   );
 }
