@@ -3,19 +3,7 @@ import '../App.css';
 import svgMap from 'svgmap';
 import 'svgmap/dist/svgMap.min.css';
 
-const countries = require('country-data').countries;
-
 export default function MapContainer(props) {
-
-    // console.log(props);
-
-    function getCode(alpha3) {
-        let country = countries[[alpha3][0]];
-        if (country !== undefined)
-            return country["alpha2"]
-        else
-            return undefined
-    }
 
     const [mapData, setMapData] = useState();
 
@@ -30,25 +18,7 @@ export default function MapContainer(props) {
 
     useEffect(() => {
         removeOldMap()
-        let mapDataValues = {}
-        for (let i=0; i<props.data.length; i++) {
-            let country = props.formInput.migration === 'Immigration' ? props.data[i].coo_iso : props.data[i].coa_iso;
-            let isoCode = getCode(country);
-            if (isoCode === undefined)
-                continue;
-            mapDataValues[isoCode] = {refugees: parseInt(props.data[i].refugees)};
-        }
-        let selectedCountryisoCode = getCode(props.formInput.country);
-        let totalMigrants = 0
-        for (let i=0; i<props.data.length; i++){
-            totalMigrants += parseInt(props.data[i].refugees);
-        }
-        mapDataValues[selectedCountryisoCode] = {
-            refugees: totalMigrants,
-            color: '#000000'
-        };
-
-        setMapData(() => mapDataValues);
+        setMapData(() => props.getMapData())
     }, [props.data])
 
     useEffect(() => {

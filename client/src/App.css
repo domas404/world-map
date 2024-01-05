@@ -208,7 +208,7 @@ html, body, #root {
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-  margin: 20px 0;
+  margin: 5px 0;
   text-transform: uppercase;
   box-shadow: #a1a1a1 2px 2px 3px;
 }
@@ -226,6 +226,9 @@ html, body, #root {
 
 .top-country {
   margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .brief-country-info {
@@ -233,7 +236,7 @@ html, body, #root {
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-  margin: 20px 0;
+  margin: 5px 0;
   /* text-transform: uppercase; */
   box-shadow: #a1a1a1 2px 2px 3px;
 }
@@ -242,4 +245,23 @@ html, body, #root {
   margin: 0 5px;
   color:#188FE5;
   font-weight: bold;
+}
+
+.numbering {
+  display: inline-block;
+  width: 12%;
+  text-align: center;
+}
+
+.numbered-text {
+  display: inline-block;
+  width: 80%;
+}
+
+.country-summary-container {
+  margin-top: 25px;
+}
+
+.summary-element {
+  margin: 5px 0;
 }
