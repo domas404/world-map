@@ -3,5 +3,8 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.21.1"
   }
 }
