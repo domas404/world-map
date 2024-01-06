@@ -5,6 +5,7 @@ import '../App.css';
 export default function DataForm(props) {
 
     const [countries, setCountries] = useState([]);
+    const [isPeriod, setIsPeriod] = useState(true);
 
     useEffect(() => {
         if (props.data !== undefined){
@@ -17,34 +18,95 @@ export default function DataForm(props) {
         }
     }, [props.data])
 
+    function handleClick() {
+        setIsPeriod((oldValue) => !oldValue)
+    }
+
     return (
         <FormikProvider value={props.formik}>
             <Form onSubmit={props.formik.handleSubmit}>
-                <div className="form-section">
-                    <label className="form-label" htmlFor="year">Year</label>
-                    <select
-                        id="year"
-                        name="year"
-                        onChange={props.formik.handleChange}
-                        value={props.formik.values.year}
-                        className="form-select"
-                    >
-                        <option>--</option>
-                        <option>2022</option>
-                        <option>2021</option>
-                        <option>2020</option>
-                        <option>2019</option>
-                        <option>2018</option>
-                        <option>2017</option>
-                        <option>2016</option>
-                        <option>2015</option>
-                        <option>2014</option>
-                        <option>2013</option>
-                        <option>2012</option>
-                        <option>2011</option>
-                        <option>2010</option>
-                    </select>
-                </div>
+                {
+                    isPeriod ?
+                    <div className="form-section">
+                        <div className="choose-year">
+                            <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
+                            <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
+                        </div>
+                        <select
+                            id="year"
+                            name="year"
+                            onChange={props.formik.handleChange}
+                            value={props.formik.values.year}
+                            className="form-select"
+                        >
+                            <option>--</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
+                            <option>2012</option>
+                            <option>2011</option>
+                            <option>2010</option>
+                        </select>
+                    </div>
+                    :
+                    <div className="form-section">
+                        <div className="choose-year">
+                            <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
+                            <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
+                        </div>
+                        <select
+                            id="year-start"
+                            name="year-start"
+                            onChange={props.formik.handleChange}
+                            value={props.formik.values.year}
+                            className="form-select"
+                        >
+                            <option>--</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
+                            <option>2012</option>
+                            <option>2011</option>
+                            <option>2010</option>
+                        </select>
+                        <select
+                            id="year-end"
+                            name="year-end"
+                            onChange={props.formik.handleChange}
+                            value={props.formik.values.year}
+                            className="form-select"
+                        >
+                            <option>--</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
+                            <option>2012</option>
+                            <option>2011</option>
+                            <option>2010</option>
+                        </select>
+                    </div>
+                }
 
                 <div className="form-section">
                     <label className="form-label" htmlFor="country">Country</label>

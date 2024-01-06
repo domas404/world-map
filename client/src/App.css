@@ -399,3 +399,9 @@ a:hover {
 .main-data-link {
   width: 75%;
 }
+
+.choose-year {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
