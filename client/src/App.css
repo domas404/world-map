@@ -405,3 +405,16 @@ a:hover {
   width: 100%;
   justify-content: space-between;
 }
+
+.chosen {
+  text-decoration: underline;
+}
+
+#startYear, #endYear {
+  width: 48%;
+}
+
+.year-period-select {
+  display: flex;
+  justify-content: space-between;
+}

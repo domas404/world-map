@@ -5,7 +5,7 @@ import '../App.css';
 export default function DataForm(props) {
 
     const [countries, setCountries] = useState([]);
-    const [isPeriod, setIsPeriod] = useState(true);
+    const [isPeriod, setIsPeriod] = useState(false);
 
     useEffect(() => {
         if (props.data !== undefined){
@@ -19,17 +19,31 @@ export default function DataForm(props) {
     }, [props.data])
 
     function handleClick() {
-        setIsPeriod((oldValue) => !oldValue)
+        setIsPeriod((oldValue) => !oldValue);
     }
+
+    const [yearOptions, setYearOptions] = useState([]);
+
+    function getYearOptions() {
+        let options = [];
+        for (let i=2010; i<=2022; i++){
+            options.push(<option key={i}>{i}</option>);
+        }
+        setYearOptions(() => options);
+    }
+
+    useEffect(() => {
+        getYearOptions();
+    }, []);
 
     return (
         <FormikProvider value={props.formik}>
             <Form onSubmit={props.formik.handleSubmit}>
                 {
-                    isPeriod ?
+                    !isPeriod ?
                     <div className="form-section">
                         <div className="choose-year">
-                            <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
+                            <label className="form-label chosen" htmlFor="year">Year</label>
                             <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
                         </div>
                         <select
@@ -40,71 +54,37 @@ export default function DataForm(props) {
                             className="form-select"
                         >
                             <option>--</option>
-                            <option>2022</option>
-                            <option>2021</option>
-                            <option>2020</option>
-                            <option>2019</option>
-                            <option>2018</option>
-                            <option>2017</option>
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                            <option>2011</option>
-                            <option>2010</option>
+                            {yearOptions}
                         </select>
                     </div>
                     :
                     <div className="form-section">
                         <div className="choose-year">
                             <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
-                            <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
+                            <label className="form-label chosen" htmlFor="year">Period</label>
                         </div>
-                        <select
-                            id="year-start"
-                            name="year-start"
-                            onChange={props.formik.handleChange}
-                            value={props.formik.values.year}
-                            className="form-select"
-                        >
-                            <option>--</option>
-                            <option>2022</option>
-                            <option>2021</option>
-                            <option>2020</option>
-                            <option>2019</option>
-                            <option>2018</option>
-                            <option>2017</option>
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                            <option>2011</option>
-                            <option>2010</option>
-                        </select>
-                        <select
-                            id="year-end"
-                            name="year-end"
-                            onChange={props.formik.handleChange}
-                            value={props.formik.values.year}
-                            className="form-select"
-                        >
-                            <option>--</option>
-                            <option>2022</option>
-                            <option>2021</option>
-                            <option>2020</option>
-                            <option>2019</option>
-                            <option>2018</option>
-                            <option>2017</option>
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                            <option>2011</option>
-                            <option>2010</option>
-                        </select>
+                        <div className="year-period-select">
+                            <select
+                                id="startYear"
+                                name="startYear"
+                                onChange={props.formik.handleChange}
+                                value={props.formik.values.startYear}
+                                className="form-select"
+                            >
+                                <option>--</option>
+                                {yearOptions}
+                            </select>
+                            <select
+                                id="endYear"
+                                name="endYear"
+                                onChange={props.formik.handleChange}
+                                value={props.formik.values.endYear}
+                                className="form-select"
+                            >
+                                <option>--</option>
+                                {yearOptions}
+                            </select>
+                        </div>
                     </div>
                 }
 

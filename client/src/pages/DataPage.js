@@ -18,6 +18,8 @@ export default function DataPage() {
   	const formik = useFormik({
 		initialValues: {
           	year: '',
+			startYear: '',
+			endYear: '',
           	migration: '',
           	country: '',
       	},
