@@ -23,11 +23,17 @@ app.get('/api/all-countries', (req, res) => {
 });
 
 app.get('/api/user-input', (req, res) => {
-    const { year } = req.query;
-    const { country } = req.query;
-    const { migration } = req.query;
-    const query = `SELECT * FROM refugees WHERE year = ? AND ${migration == 'Immigration' ? 'coa_iso' : 'coo_iso'} = ?`
-    db.all(query, [year, country], (err, rows) => {
+    const { year, country, migration, startYear, endYear } = req.query;
+    let query = ``;
+    let values = [];
+    if (startYear !== '' && endYear !== ''){
+        query = `SELECT coo_iso, coa_iso, SUM(refugees) AS 'refugees' FROM refugees WHERE ${migration == 'Emigration' ? 'coo_iso' : 'coa_iso'} = ? AND year BETWEEN ? AND ? GROUP BY ${migration == 'Emigration' ? 'coa_iso' : 'coo_iso'};`;
+        values = [country, startYear, endYear];
+    } else {
+        query = `SELECT * FROM refugees WHERE ${migration == 'Emigration' ? 'coa_iso' : 'coo_iso'} = ? AND year = ?`;
+        values = [country, year];
+    }
+    db.all(query, values, (err, rows) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Internal Server Error' });

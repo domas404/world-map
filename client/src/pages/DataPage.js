@@ -34,9 +34,11 @@ export default function DataPage() {
     	setAllCountries(() => resData);
   	}
 
-	async function getData(year, country, migration) {
-		let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&country=${country}&migration=${migration}`);
+	async function getData(userInput) {
+		const { year, startYear, endYear, country, migration } = userInput;
+		let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&startYear=${startYear}&endYear=${endYear}&country=${country}&migration=${migration}`);
 		let resData = res.data;
+		console.log(resData);
 		setData(() => resData);
 	}
 
@@ -46,7 +48,7 @@ export default function DataPage() {
 
 	useEffect(() => {
 		if (Object.keys(input).length !== 0)
-		getData(input.year, input.country, input.migration);
+		getData(input);
 	}, [input]);
 
 	function getCode(alpha3) {

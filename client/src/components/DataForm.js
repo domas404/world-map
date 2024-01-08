@@ -7,6 +7,60 @@ export default function DataForm(props) {
     const [countries, setCountries] = useState([]);
     const [isPeriod, setIsPeriod] = useState(false);
 
+    const singleYear = () => {
+        return (
+            <div className="form-section">
+                <div className="choose-year">
+                    <label className="form-label chosen" htmlFor="year">Year</label>
+                    <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
+                </div>
+                <select
+                    id="year"
+                    name="year"
+                    onChange={props.formik.handleChange}
+                    value={props.formik.values.year}
+                    className="form-select"
+                >
+                    <option>--</option>
+                    {yearOptions}
+                </select>
+            </div>
+        );
+    }
+
+    const yearPeriod = () => {
+        return (
+            <div className="form-section">
+                <div className="choose-year">
+                    <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
+                    <label className="form-label chosen" htmlFor="year">Period</label>
+                </div>
+                <div className="year-period-select">
+                    <select
+                        id="startYear"
+                        name="startYear"
+                        onChange={props.formik.handleChange}
+                        value={props.formik.values.startYear}
+                        className="form-select"
+                    >
+                        <option>--</option>
+                        {yearOptions}
+                    </select>
+                    <select
+                        id="endYear"
+                        name="endYear"
+                        onChange={props.formik.handleChange}
+                        value={props.formik.values.endYear}
+                        className="form-select"
+                    >
+                        <option>--</option>
+                        {yearOptions}
+                    </select>
+                </div>
+            </div>
+        );
+    }
+
     useEffect(() => {
         if (props.data !== undefined){
             let sortedData = [...props.data];
@@ -39,55 +93,7 @@ export default function DataForm(props) {
     return (
         <FormikProvider value={props.formik}>
             <Form onSubmit={props.formik.handleSubmit}>
-                {
-                    !isPeriod ?
-                    <div className="form-section">
-                        <div className="choose-year">
-                            <label className="form-label chosen" htmlFor="year">Year</label>
-                            <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
-                        </div>
-                        <select
-                            id="year"
-                            name="year"
-                            onChange={props.formik.handleChange}
-                            value={props.formik.values.year}
-                            className="form-select"
-                        >
-                            <option>--</option>
-                            {yearOptions}
-                        </select>
-                    </div>
-                    :
-                    <div className="form-section">
-                        <div className="choose-year">
-                            <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
-                            <label className="form-label chosen" htmlFor="year">Period</label>
-                        </div>
-                        <div className="year-period-select">
-                            <select
-                                id="startYear"
-                                name="startYear"
-                                onChange={props.formik.handleChange}
-                                value={props.formik.values.startYear}
-                                className="form-select"
-                            >
-                                <option>--</option>
-                                {yearOptions}
-                            </select>
-                            <select
-                                id="endYear"
-                                name="endYear"
-                                onChange={props.formik.handleChange}
-                                value={props.formik.values.endYear}
-                                className="form-select"
-                            >
-                                <option>--</option>
-                                {yearOptions}
-                            </select>
-                        </div>
-                    </div>
-                }
-
+                { !isPeriod ? singleYear() : yearPeriod() }
                 <div className="form-section">
                     <label className="form-label" htmlFor="country">Country</label>
                     <select
@@ -97,6 +103,7 @@ export default function DataForm(props) {
                         value={props.formik.values.country}
                         className="form-select"
                     >
+                        <option>--</option>
                         {countries}
                     </select>
                 </div>
