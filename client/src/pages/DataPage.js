@@ -14,6 +14,17 @@ export default function DataPage() {
   	const [input, setInput] = useState({});
   	const [data, setData] = useState([]);
 	const [mapData, setMapData] = useState({});
+	const [yearInputType, setYearInputType] = useState("single");
+
+	function handleYearInputType (isPeriod) {
+		setYearInputType(() => {
+			if (isPeriod){
+				return "period";
+			} else {
+				return "single";
+			}
+		})
+	}
 
   	const formik = useFormik({
 		initialValues: {
@@ -36,9 +47,8 @@ export default function DataPage() {
 
 	async function getData(userInput) {
 		const { year, startYear, endYear, country, migration } = userInput;
-		let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&startYear=${startYear}&endYear=${endYear}&country=${country}&migration=${migration}`);
+		let res = await axios.get(`http://localhost:5000/api/user-input?year=${year}&startYear=${startYear}&endYear=${endYear}&country=${country}&migration=${migration}&yearInputType=${yearInputType}`);
 		let resData = res.data;
-		console.log(resData);
 		setData(() => resData);
 	}
 
@@ -83,9 +93,9 @@ export default function DataPage() {
 
 	return (
 		<div className="main-container">
-			<LeftMenu formik={formik} data={allCountries} />
+			<LeftMenu formik={formik} data={allCountries} handleYear={handleYearInputType} />
 			<MapContainer data={data} getMapData={getMapData} />
-			<RightMenu formInput={input} mapData={mapData} />
+			<RightMenu formInput={input} mapData={mapData} yearInputType={yearInputType} />
 		</div>
 	);
 }

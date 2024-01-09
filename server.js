@@ -23,14 +23,14 @@ app.get('/api/all-countries', (req, res) => {
 });
 
 app.get('/api/user-input', (req, res) => {
-    const { year, country, migration, startYear, endYear } = req.query;
+    const { year, country, migration, startYear, endYear, yearInputType } = req.query;
     let query = ``;
     let values = [];
-    if (startYear !== '' && endYear !== ''){
+    if (yearInputType === "period"){
         query = `SELECT coo_iso, coa_iso, SUM(refugees) AS 'refugees' FROM refugees WHERE ${migration == 'Emigration' ? 'coo_iso' : 'coa_iso'} = ? AND year BETWEEN ? AND ? GROUP BY ${migration == 'Emigration' ? 'coa_iso' : 'coo_iso'};`;
         values = [country, startYear, endYear];
     } else {
-        query = `SELECT * FROM refugees WHERE ${migration == 'Emigration' ? 'coa_iso' : 'coo_iso'} = ? AND year = ?`;
+        query = `SELECT coo_iso, coa_iso, refugees FROM refugees WHERE ${migration == 'Emigration' ? 'coo_iso' : 'coa_iso'} = ? AND year = ?`;
         values = [country, year];
     }
     db.all(query, values, (err, rows) => {

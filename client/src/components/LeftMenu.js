@@ -20,7 +20,7 @@ export default function LeftMenu(props) {
                     Refugee data
                 </div>
             </div>
-            <DataForm formik={props.formik} data={props.data} />
+            <DataForm formik={props.formik} data={props.data} handleYear={props.handleYear} />
         </div>
     )
 }

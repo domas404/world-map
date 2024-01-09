@@ -35,8 +35,8 @@ export default function Main() {
                             </div>
                             <div className='main-data-item'>
                                 <div className='main-data-item-name'>Climate Data</div>
-                                <div className='main-data-item-period'>xxxx-xxxx</div>
-                                <div className='main-data-item-source'>Source</div>
+                                <div className='main-data-item-period'>TBD</div>
+                                <div className='main-data-item-source'>TBD</div>
                             </div>
                         </div>
                     </div>

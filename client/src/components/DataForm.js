@@ -4,6 +4,8 @@ import '../App.css';
 
 export default function DataForm(props) {
 
+    const { formik, data, handleYear } = props;
+
     const [countries, setCountries] = useState([]);
     const [isPeriod, setIsPeriod] = useState(false);
 
@@ -17,8 +19,8 @@ export default function DataForm(props) {
                 <select
                     id="year"
                     name="year"
-                    onChange={props.formik.handleChange}
-                    value={props.formik.values.year}
+                    onChange={formik.handleChange}
+                    value={formik.values.year}
                     className="form-select"
                 >
                     <option>--</option>
@@ -39,8 +41,8 @@ export default function DataForm(props) {
                     <select
                         id="startYear"
                         name="startYear"
-                        onChange={props.formik.handleChange}
-                        value={props.formik.values.startYear}
+                        onChange={formik.handleChange}
+                        value={formik.values.startYear}
                         className="form-select"
                     >
                         <option>--</option>
@@ -49,8 +51,8 @@ export default function DataForm(props) {
                     <select
                         id="endYear"
                         name="endYear"
-                        onChange={props.formik.handleChange}
-                        value={props.formik.values.endYear}
+                        onChange={formik.handleChange}
+                        value={formik.values.endYear}
                         className="form-select"
                     >
                         <option>--</option>
@@ -62,15 +64,15 @@ export default function DataForm(props) {
     }
 
     useEffect(() => {
-        if (props.data !== undefined){
-            let sortedData = [...props.data];
+        if (data !== undefined){
+            let sortedData = [...data];
             sortedData.sort((a, b) => a.coa_name > b.coa_name);
             let mappedData = sortedData.map((item) => {
                 return <option key={item.coa_iso} value={item.coa_iso}>{item.coa_name}</option>
             })
             setCountries(() => mappedData);
         }
-    }, [props.data])
+    }, [data])
 
     function handleClick() {
         setIsPeriod((oldValue) => !oldValue);
@@ -90,17 +92,22 @@ export default function DataForm(props) {
         getYearOptions();
     }, []);
 
+    useEffect(() => {
+        // console.log("isPeriod:", isPeriod)
+        handleYear(isPeriod);
+    }, [isPeriod]);
+
     return (
-        <FormikProvider value={props.formik}>
-            <Form onSubmit={props.formik.handleSubmit}>
+        <FormikProvider value={formik}>
+            <Form onSubmit={formik.handleSubmit}>
                 { !isPeriod ? singleYear() : yearPeriod() }
                 <div className="form-section">
                     <label className="form-label" htmlFor="country">Country</label>
                     <select
                         id="country"
                         name="country"
-                        onChange={props.formik.handleChange}
-                        value={props.formik.values.country}
+                        onChange={formik.handleChange}
+                        value={formik.values.country}
                         className="form-select"
                     >
                         <option>--</option>
@@ -110,9 +117,9 @@ export default function DataForm(props) {
                 
                 <div className="form-section">
                     <label className="form-label">Migration</label>
-                    <Field id="emigration" className="radio-button" type="radio" name="migration" onChange={props.formik.handleChange} value="Emigration" />
+                    <Field id="emigration" className="radio-button" type="radio" name="migration" onChange={formik.handleChange} value="Emigration" />
                     <label className="radio-option" htmlFor="emigration">Emigration</label>
-                    <Field id="immigration" className="radio-button" type="radio" name="migration" onChange={props.formik.handleChange} value="Immigration" />
+                    <Field id="immigration" className="radio-button" type="radio" name="migration" onChange={formik.handleChange} value="Immigration" />
                     <label className="radio-option" htmlFor="immigration">Immigration</label>
                 </div>
 

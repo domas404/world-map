@@ -4,9 +4,10 @@ import '../App.css';
 const countries = require('country-data').countries;
 
 export default function RightMenu(props) {
+
+    const { formInput, mapData, yearInputType } = props;
     
     const [country, setCountry] = useState('');
-    const [year, setYear] = useState('');
     const [total, setTotal] = useState('');
     const [topCountries, setTopCountries] = useState([]);
     const [mappedTopCountries, setMappedTopCountries] = useState([]);
@@ -20,7 +21,7 @@ export default function RightMenu(props) {
     }
 
     function getTopCountries() {
-        let countryList = Object.keys(props.mapData).map((key) => [getCountryName(key), props.mapData[key].refugees]);
+        let countryList = Object.keys(mapData).map((key) => [getCountryName(key), mapData[key].refugees]);
         countryList.sort((a, b) => a[1] < b[1]);
         setTotal(countryList[0][1].toLocaleString("lt-LT"));
         countryList.splice(0, 1);
@@ -28,14 +29,13 @@ export default function RightMenu(props) {
     }
 
     useEffect(() => {
-        if (Object.keys(props.mapData).length > 0)
+        if (Object.keys(mapData).length > 0)
             getTopCountries();
-    }, [props.mapData]);
+    }, [mapData]);
 
     useEffect(() => {
-        setCountry(getCountryName(props.formInput.country));
-        setYear(props.formInput.year);
-    }, [props.formInput.country, props.formInput.year]);
+        setCountry(getCountryName(formInput.country));
+    }, [formInput.country]);
 
     useEffect(() => {
         let mappedData = [];
@@ -60,7 +60,7 @@ export default function RightMenu(props) {
                         {country}
                     </div>
                     <div className="country-year">
-                        {year}
+                        { yearInputType === "single" ? formInput.year : `${formInput.startYear}-${formInput.endYear}` }
                     </div>
                 </div>
                 <div className="country-summary-container">
@@ -68,7 +68,7 @@ export default function RightMenu(props) {
                     <div className="brief-country-info">
                         <div className="summary-element">
                             <span className="text-highlight">Type:</span>
-                            {Object.keys(props.formInput).length > 0 ? props.formInput.migration : ""}
+                            {Object.keys(formInput).length > 0 ? formInput.migration : ""}
                         </div>
                         <div className="summary-element">
                             <span className="text-highlight">Total:</span>
