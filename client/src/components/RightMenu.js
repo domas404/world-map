@@ -3,9 +3,7 @@ import '../App.css';
 
 const countries = require('country-data').countries;
 
-export default function RightMenu(props) {
-
-    const { formInput, mapData, yearInputType } = props;
+export default function RightMenu({ formInput, mapData, yearInputType }) {
     
     const [country, setCountry] = useState('');
     const [total, setTotal] = useState('');
@@ -74,7 +72,6 @@ export default function RightMenu(props) {
                             <span className="text-highlight">Total:</span>
                             {total}
                         </div>
-                        {/* <div><span className="text-highlight">Change:</span>-5%</div> */}
                     </div>
                 </div>
                 <div className="country-summary-container">

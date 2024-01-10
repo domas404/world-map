@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
 import axios from 'axios';
-import '../App.css';
 import LeftMenu from '../components/LeftMenu'
 import RightMenu from '../components/RightMenu'
 import MapContainer from '../components/MapContainer'
-import { useFormik } from 'formik';
+import '../App.css';
 
 const countries = require('country-data').countries;
 

@@ -1,11 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes } from "react-router-dom";
-import { Link } from "react-router-dom"
-import globe from '../assets/globe.png'
+import { Link } from "react-router-dom";
+import './Main.css';
+import globe from '../assets/globe.png';
 
 export default function Main() {
-  	// <Link to="/pages/DataPage">See data</Link>
-
 	return (
         <div className='main-page-container'>
             <div className="main-logo-container">

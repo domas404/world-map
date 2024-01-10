@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Field, Form, FormikProvider } from 'formik';
 import '../App.css';
 
-export default function DataForm(props) {
-
-    const { formik, data, handleYear } = props;
+export default function DataForm({ formik, data, handleYear }) {
 
     const [countries, setCountries] = useState([]);
     const [isPeriod, setIsPeriod] = useState(false);
@@ -93,7 +91,6 @@ export default function DataForm(props) {
     }, []);
 
     useEffect(() => {
-        // console.log("isPeriod:", isPeriod)
         handleYear(isPeriod);
     }, [isPeriod]);
 

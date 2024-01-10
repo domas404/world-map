@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom"
+import DataForm from './DataForm'
 import '../App.css';
 import globe from '../assets/globe.png'
-import DataForm from './DataForm'
-import { Link } from "react-router-dom"
 
-export default function LeftMenu(props) {
+export default function LeftMenu({ formik, data, handleYear }) {
     return (
         <div className="side-menu">
             <div className="logo-container">
@@ -20,7 +20,7 @@ export default function LeftMenu(props) {
                     Refugee data
                 </div>
             </div>
-            <DataForm formik={props.formik} data={props.data} handleYear={props.handleYear} />
+            <DataForm formik={formik} data={data} handleYear={handleYear} />
         </div>
     )
 }

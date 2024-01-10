@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import '../App.css';
 import svgMap from 'svgmap';
 import 'svgmap/dist/svgMap.min.css';
+import '../App.css';
 
-export default function MapContainer(props) {
+function removeOldMap() {
+    const oldMap = document.querySelector('.svgMap-container');
+    if (oldMap != null)
+        oldMap.remove();
+    const oldTooltip = document.querySelector('.svgMap-tooltip');
+    if (oldTooltip != null)
+        oldTooltip.remove();
+}
+
+export default function MapContainer({ data, getMapData }) {
 
     const [mapData, setMapData] = useState();
 
-    function removeOldMap() {
-        const oldMap = document.querySelector('.svgMap-container');
-        if (oldMap != null)
-            oldMap.remove();
-        const oldTooltip = document.querySelector('.svgMap-tooltip');
-        if (oldTooltip != null)
-            oldTooltip.remove();
-    }
-
     useEffect(() => {
         removeOldMap()
-        setMapData(() => props.getMapData())
-    }, [props.data])
+        setMapData(() => getMapData())
+    }, [data]);
 
     useEffect(() => {
         if (mapData !== undefined){
