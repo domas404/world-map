@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 import DataForm from './DataForm'
 import '../App.css';
+import './LeftMenu.css';
 import globe from '../assets/globe.png'
 
 export default function LeftMenu({ formik, data, handleYear }) {

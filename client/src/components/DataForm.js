@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Field, Form, FormikProvider } from 'formik';
 import '../App.css';
+import './DataForm.css';
 
 export default function DataForm({ formik, data, handleYear }) {
 

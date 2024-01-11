@@ -6,9 +6,9 @@ import RightMenu from '../components/RightMenu'
 import MapContainer from '../components/MapContainer'
 import '../App.css';
 
-const countries = require('country-data').countries;
+const COUNTRIES = require('country-data').countries;
 
-export default function DataPage() {
+export default function RefugeeData() {
   
   	const [allCountries, setAllCountries] = useState([]);
   	const [input, setInput] = useState({});
@@ -62,7 +62,7 @@ export default function DataPage() {
 	}, [input]);
 
 	function getCode(alpha3) {
-        let country = countries[[alpha3][0]];
+        let country = COUNTRIES[[alpha3][0]];
         if (country !== undefined)
             return country["alpha2"]
         else

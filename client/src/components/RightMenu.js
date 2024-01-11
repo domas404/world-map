@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../App.css';
+import './RightMenu.css';
 
 const countries = require('country-data').countries;
 

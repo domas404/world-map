@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import svgMap from 'svgmap';
 import 'svgmap/dist/svgMap.min.css';
 import '../App.css';
+import './MapContainer.css';
 
 function removeOldMap() {
     const oldMap = document.querySelector('.svgMap-container');

@@ -1,0 +1,21 @@
+.map-container {
+    height: 100%;
+    width: 86%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-interactive {
+    background-color: white;
+    height: 95%;
+    width: 100%;
+    border-radius: 16px;
+}
+
+.svgMap-map-wrapper {
+    background: #fff !important;
+    height: 95vh !important;
+    width: auto !important;
+    border-radius: 16px !important;
+}

@@ -1,0 +1,99 @@
+.form-section {
+	margin-top: 20px;
+}
+
+.choose-year {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+  
+.form-label {
+	text-transform: uppercase;
+	font-size: 9pt;
+	font-weight: 500;
+	color: #4F4F4F;
+	margin-left: 5px;
+}
+
+.chosen {
+	text-decoration: underline;
+}
+
+.form-select {
+	width: 100%;
+	text-align: center;
+	padding: 8px;
+	background-color: #fff;
+	border: none;
+	border-radius: 8px;
+	margin: 5px 0;
+	color: #4F4F4F;
+	box-shadow: #a1a1a1 2px 2px 3px;
+}
+
+.form-select:hover {
+	cursor: pointer;
+}
+
+.year-period-select {
+	display: flex;
+	justify-content: space-between;
+}
+
+#startYear, #endYear {
+	width: 48%;
+}
+
+.radio-option {
+	padding: 8px;
+	display: block;
+	background-color: #fff;
+	margin: 5px 0;
+	border-radius: 8px;
+	text-align: center;
+	font-size: 10pt;
+	box-shadow: #a1a1a1 2px 2px 3px;
+	font-family: Arial;
+}
+
+.radio-option:hover {
+	cursor: pointer;
+	color: #188FE5;
+}
+
+.radio-button {
+	display: none;
+}
+
+.radio-button:checked + label {
+	background-color: white;
+	color: #188FE5;
+	font-weight: bold;
+}
+
+.submit-button {
+	width: 100%;
+	padding: 8px;
+	border: none;
+	border-radius: 8px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	font-family: 'Inter';
+	font-size: 9pt;
+	font-weight: 500;
+	color: white;
+	background-color: #188FE5;
+	box-shadow: #a1a1a1 2px 2px 3px;
+}
+
+.submit-button:hover {
+	cursor: pointer;
+	background-color: #1374b9;
+	color: white;
+}
+
+.submit-button:active {
+	background-color: #0f5c93;
+	color: white;
+}

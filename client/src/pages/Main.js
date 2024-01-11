@@ -25,7 +25,7 @@ export default function Main() {
                         </div>
                         <div className='main-data-item-container'>
                             <div className='main-data-item'>
-                                <Link to="/pages/DataPage" className='main-data-item-name'>Refugee Data</Link>
+                                <Link to="/pages/RefugeeData" className='main-data-item-name'>Refugee Data</Link>
                                 <div className='main-data-item-period'>2010-2022</div>
                                 <div className='main-data-item-source'>
                                     <a href="https://www.kaggle.com/datasets/sujaykapadnis/refugees" rel="noreferrer" target='_blank'>kaggle.com</a>
