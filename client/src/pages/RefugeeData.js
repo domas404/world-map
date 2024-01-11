@@ -5,6 +5,7 @@ import LeftMenu from '../components/LeftMenu'
 import RightMenu from '../components/RightMenu'
 import MapContainer from '../components/MapContainer'
 import '../App.css';
+import './RefugeeData.css';
 
 const COUNTRIES = require('country-data').countries;
 

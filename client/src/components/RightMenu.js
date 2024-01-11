@@ -33,6 +33,7 @@ export default function RightMenu({ formInput, mapData, yearInputType }) {
     }, [mapData]);
 
     useEffect(() => {
+        console.log(formInput.country, country);
         setCountry(getCountryName(formInput.country));
     }, [formInput.country]);
 
@@ -53,35 +54,39 @@ export default function RightMenu({ formInput, mapData, yearInputType }) {
 
     return (
         <div className="side-menu">
-            <div className="country-info-container">
-                <div className="country-title-and-year">
-                    <div className="country-title">
-                        {country}
-                    </div>
-                    <div className="country-year">
-                        { yearInputType === "single" ? formInput.year : `${formInput.startYear}-${formInput.endYear}` }
-                    </div>
-                </div>
-                <div className="country-summary-container">
-                    <div className="form-label">Summary</div>
-                    <div className="brief-country-info">
-                        <div className="summary-element">
-                            <span className="text-highlight">Type:</span>
-                            {Object.keys(formInput).length > 0 ? formInput.migration : ""}
+            {
+                country === undefined ? <div></div>
+                :
+                <div className="country-info-container">
+                    <div className="country-title-and-year">
+                        <div className="country-title">
+                            {country}
                         </div>
-                        <div className="summary-element">
-                            <span className="text-highlight">Total:</span>
-                            {total}
+                        <div className="country-year">
+                            { yearInputType === "single" ? formInput.year : `${formInput.startYear}-${formInput.endYear}` }
                         </div>
                     </div>
-                </div>
-                <div className="country-summary-container">
-                    <div className="form-label"><span className="top-5">Top</span> countries:</div>
-                    <div className="top-countries-container">
-                        {mappedTopCountries}
+                    <div className="country-summary-container">
+                        <div className="form-label">Summary</div>
+                        <div className="brief-country-info">
+                            <div className="summary-element">
+                                <span className="text-highlight">Type:</span>
+                                {Object.keys(formInput).length > 0 ? formInput.migration : ""}
+                            </div>
+                            <div className="summary-element">
+                                <span className="text-highlight">Total:</span>
+                                {total}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="country-summary-container">
+                        <div className="form-label"><span className="top-5">Top</span> countries:</div>
+                        <div className="top-countries-container">
+                            {mappedTopCountries}
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }

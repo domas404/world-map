@@ -1,66 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Field, Form, FormikProvider } from 'formik';
-import '../App.css';
+import { singleYear, yearPeriod } from './SelectYear';
+import '../../App.css';
 import './DataForm.css';
 
 export default function DataForm({ formik, data, handleYear }) {
 
     const [countries, setCountries] = useState([]);
     const [isPeriod, setIsPeriod] = useState(false);
-
-    const singleYear = () => {
-        return (
-            <div className="form-section">
-                <div className="choose-year">
-                    <label className="form-label chosen" htmlFor="year">Year</label>
-                    <label className="form-label" htmlFor="year" onClick={handleClick}>Period</label>
-                </div>
-                <select
-                    id="year"
-                    name="year"
-                    onChange={formik.handleChange}
-                    value={formik.values.year}
-                    className="form-select"
-                >
-                    <option>--</option>
-                    {yearOptions}
-                </select>
-            </div>
-        );
-    }
-
-    const yearPeriod = () => {
-        return (
-            <div className="form-section">
-                <div className="choose-year">
-                    <label className="form-label" htmlFor="year" onClick={handleClick}>Year</label>
-                    <label className="form-label chosen" htmlFor="year">Period</label>
-                </div>
-                <div className="year-period-select">
-                    <select
-                        id="startYear"
-                        name="startYear"
-                        onChange={formik.handleChange}
-                        value={formik.values.startYear}
-                        className="form-select"
-                    >
-                        <option>--</option>
-                        {yearOptions}
-                    </select>
-                    <select
-                        id="endYear"
-                        name="endYear"
-                        onChange={formik.handleChange}
-                        value={formik.values.endYear}
-                        className="form-select"
-                    >
-                        <option>--</option>
-                        {yearOptions}
-                    </select>
-                </div>
-            </div>
-        );
-    }
+    const [yearOptions, setYearOptions] = useState([]);
 
     useEffect(() => {
         if (data !== undefined){
@@ -76,8 +24,6 @@ export default function DataForm({ formik, data, handleYear }) {
     function handleClick() {
         setIsPeriod((oldValue) => !oldValue);
     }
-
-    const [yearOptions, setYearOptions] = useState([]);
 
     function getYearOptions() {
         let options = [];
@@ -98,7 +44,7 @@ export default function DataForm({ formik, data, handleYear }) {
     return (
         <FormikProvider value={formik}>
             <Form onSubmit={formik.handleSubmit}>
-                { !isPeriod ? singleYear() : yearPeriod() }
+                { !isPeriod ? singleYear(formik, yearOptions, handleClick) : yearPeriod(formik, yearOptions, handleClick) }
                 <div className="form-section">
                     <label className="form-label" htmlFor="country">Country</label>
                     <select
