@@ -33,7 +33,6 @@ export default function RightMenu({ formInput, mapData, yearInputType }) {
     }, [mapData]);
 
     useEffect(() => {
-        console.log(formInput.country, country);
         setCountry(getCountryName(formInput.country));
     }, [formInput.country]);
 

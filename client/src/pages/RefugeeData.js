@@ -29,14 +29,17 @@ export default function RefugeeData() {
 
   	const formik = useFormik({
 		initialValues: {
-          	year: '',
-			startYear: '',
-			endYear: '',
+          	year: '--',
+			startYear: '--',
+			endYear: '--',
           	migration: '',
-          	country: '',
+          	country: '--',
       	},
       	onSubmit: values => {
-        	setInput(values);
+			if ((values.year === '--' && (values.startYear === '--' || values.endYear === '--')) || values.country === '--' || values.migration === '')
+				alert("Fill in the form.");
+			else
+				setInput(values);
       	},
   	});
 
